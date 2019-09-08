@@ -73,6 +73,19 @@ export default class CreateGoal extends Component {
         console.log("form submitted");
         console.log(this.state);
 
+        const newGoal = {
+            goal_activity: this.state.goal_activity,
+            goal_quantity: this.state.goal_quantity,
+            goal_quant_uom: this.state.goal_quant_uom,
+            goal_frequency: this.state.goal_frequency,
+            goal_freq_period: this.state.goal_freq_period,
+            goal_freq_uom: this.state.goal_freq_uom,
+            goal_minmax: this.state.goal_minmax
+        };
+        
+        axios.post('http://localhost:4000/goals/add', newGoal)
+            .then(res => console.log(res.data));
+
         this.setState({
             goal_activity: '',
             goal_quantity: '',
@@ -166,6 +179,9 @@ export default class CreateGoal extends Component {
                             value={this.state.goal_freq_uom} 
                             onChange={this.onChangeGoalFreqUom}
                             />
+                    </div>
+                    <div className="form-group">
+                        <input type="submit" value="Create Goal" className="btn btn-primary" />
                     </div>
                 </form>
             </div>
