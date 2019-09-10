@@ -64,7 +64,7 @@ export default class CreateGoal extends Component {
 
     onChangeGoalMinmax(e){
         this.setState({
-            goal_minmax: (e.target.value==="Maximum") ? "Maximum":"Minimum"
+            goal_minmax: e.target.value
         })
     }
 

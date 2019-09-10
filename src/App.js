@@ -6,6 +6,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import EnterActivity from "./components/enter-activity.component";
 import CreateGoal from "./components/create-goal.component";
 import ListGoals from "./components/list-goals.component";
+import EnterOneActivity from "./components/enter-one-activity.component";
+import ListActivity from "./components/list-activity.component";
 
 import logo from "./logo.svg";
 
@@ -25,6 +27,9 @@ class App extends Component {
                   <Link to="/" className="nav-link">Enter Activity</Link>
                 </li>
                 <li className="navbar-item">
+                  <Link to="/listactivity" className="nav-link">View Activity</Link>
+                </li>
+                <li className="navbar-item">
                   <Link to="/create" className="nav-link">Create Goal</Link>
                 </li>
                 <li className="navbar-item">
@@ -35,8 +40,10 @@ class App extends Component {
           </nav>
           <br/>
           <Route path="/" exact component={EnterActivity} />
+          <Route path="/listactivity" component={ListActivity} />
           <Route path="/listgoals" component={ListGoals} />
           <Route path="/create" component={CreateGoal} />
+          <Route path="/oneactivity/:id" component={EnterOneActivity} />
         </div>
       </Router>
     );

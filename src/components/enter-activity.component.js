@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const Activity = props => (
     <div className="float-md-left col-md-4 col-lg-2 col-sm-6">
-        <p>{props.goal.goal_activity}</p>
+        <Link to={"/oneactivity/"+props.goal._id}>{props.goal.goal_activity}</Link>
     </div>
 )
 
