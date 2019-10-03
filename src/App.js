@@ -8,7 +8,8 @@ import CreateGoal from "./components/create-goal.component";
 import ListGoals from "./components/list-goals.component";
 import EnterOneActivity from "./components/enter-one-activity.component";
 import ListActivity from "./components/list-activity.component";
-
+import TrackProgress from "./components/track-progress.component";
+import TrackOneGoal from "./components/track-one-goal.component";
 import logo from "./logo.svg";
 
 class App extends Component {
@@ -35,6 +36,9 @@ class App extends Component {
                 <li className="navbar-item">
                   <Link to="/listgoals" className="nav-link">View Goals</Link>
                 </li>
+                <li className="navbar-item">
+                  <Link to="/trackprogress" className="nav-link">Track Progress</Link>
+                </li>
               </ul>
             </div>
           </nav>
@@ -42,8 +46,10 @@ class App extends Component {
           <Route path="/" exact component={EnterActivity} />
           <Route path="/listactivity" component={ListActivity} />
           <Route path="/listgoals" component={ListGoals} />
+          <Route path="/trackprogress" component={TrackProgress} />
           <Route path="/create" component={CreateGoal} />
           <Route path="/oneactivity/:id" component={EnterOneActivity} />
+          <Route path="/listactivity/:action" component={TrackOneGoal} />
         </div>
       </Router>
     );
