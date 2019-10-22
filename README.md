@@ -1,3 +1,22 @@
+# Unnamed Goal Tracker App
+
+This front end uses React, Node.js, and Bootstrap based on the MERN stack tutorial found here:
+https://codingthesmartway.com/the-mern-stack-tutorial-building-a-react-crud-application-from-start-to-finish-part-1/
+
+It connects to the back end at https://github.com/william-w-martin/goal-tracker-backend
+
+Installation:
+```
+$ npx create-react-app goal-tracker
+$ npm install bootstrap
+$ npm install react-router-dom
+```
+
+Run the application (start the backend first):
+```
+$ npm start
+```
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
