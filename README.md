@@ -10,6 +10,8 @@ Installation:
 $ npx create-react-app goal-tracker
 $ npm install bootstrap
 $ npm install react-router-dom
+$ npm install date-fns --save
+$ npm install victory
 ```
 
 Run the application (start the backend first):
