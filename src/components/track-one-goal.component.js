@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
-import { VictoryBar, VictoryAxis, VictoryChart, VictoryTheme, VictoryLine } from 'victory';
+import { VictoryBar, VictoryAxis, VictoryChart, VictoryTheme, VictoryLine, VictoryLabel } from 'victory';
 import axios from 'axios';
-import { lightFormat, subDays, subWeeks, format } from 'date-fns';
+import { startOfDay, subDays, subWeeks, format } from 'date-fns';
 import { subMonths } from 'date-fns/esm';
 
 export default class TrackOneGoal extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {activities: []};
+        const today = startOfDay(new Date());
+        this.state = {
+            activities: [],
+            domain: {x: [subDays(today,6),today]}
+            };
         //this.mergeActivitiesByDate = this.mergeActivitiesByDate.bind(this);
     }
 
@@ -19,7 +23,7 @@ export default class TrackOneGoal extends Component {
         let activitiesByDate = new Map();
         let date, quantity;
         activities.forEach(activity => {
-            date = lightFormat(new Date(activity.act_datetime),'yyyy-MM-dd');
+            date = startOfDay(new Date(activity.act_datetime));
             quantity = activitiesByDate.get(date);
             if (quantity === undefined) {
                 activitiesByDate.set(date,activity.act_quantity);
@@ -82,28 +86,62 @@ export default class TrackOneGoal extends Component {
         }
     }
 
+    getGoalLabel() {
+        let label = this.props.goal.goal_activity + " " +
+            this.props.goal.goal_quantity + " " +
+            this.props.goal.goal_quant_uom + " " +
+            "Every " +
+            this.props.goal.goal_freq_uom;
+        return label;
+    }
+
+    getVictoryLabel() {
+        /*
+        <VictoryLabel 
+                        text={ this.props.goal.goal_quant_uom }
+                        dy={10}
+                        style={{
+                            labels: { 
+                                fill: "white",
+                                stroke: "white"                       
+                            },
+                            data: {
+                                fill: "white",
+                                stroke: "white"
+                            }
+                        }}
+                    />
+                    */
+        return "";
+    }
+
     render() {
 
         return (
-            <div>    
+            <div>
+                <h4>{this.getGoalLabel()}</h4>
                 <VictoryChart 
                     domainPadding={10}
                     theme={VictoryTheme.material}
+                    domain={ this.state.domain }
+                    scale={{ x: "time" }}
                 >
                     <VictoryAxis 
-                        tickValues={this.getTickValues()}
+                        //tickValues={this.getTickValues()}
                         fixLabelOverlap={true}
                     />
                     <VictoryAxis 
                         dependentAxis 
-                        label={ this.props.goal.goal_quant_uom }
                     />
                     <VictoryLine 
                         samples={10}
+                        style={{ data: { stroke: "#701a29" }}}
                         y={() => this.props.goal.goal_quantity}
                     />
                     <VictoryBar 
                         data={ this.state.activities }
+                        barRatio={0.7}
+                        style={{ data: { fill: "green" }}}
                         x={0}
                         y={1}
                     />

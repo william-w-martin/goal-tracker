@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.App-activity {
+  background-color: #701a29;
+  color: whitesmoke;
+}

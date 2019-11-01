@@ -23,6 +23,11 @@
   color: #61dafb;
 }
 
+.App-activity {
+  background-color: #701a29;
+  color: whitesmoke;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

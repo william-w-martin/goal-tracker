@@ -10,7 +10,6 @@ import EnterOneActivity from "./components/enter-one-activity.component";
 import ListActivity from "./components/list-activity.component";
 import TrackProgress from "./components/track-progress.component";
 import TrackOneGoal from "./components/track-one-goal.component";
-import logo from "./logo.svg";
 
 class App extends Component {
   render() {
@@ -18,9 +17,6 @@ class App extends Component {
       <Router>
         <div className="container">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand" href="https://codingthesmartway.com" target="_blank" rel="noopener noreferrer">
-              <img src={logo} width="30" height="30" alt="Goal Tracker" />
-            </a>
             <Link to="/" className="navbar-brand">Goal Tracker</Link>
             <div className="collpase navbar-collapse">
               <ul className="navbar-nav mr-auto">
